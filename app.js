@@ -8,7 +8,7 @@ function PageTransitions() {
   for (let i = 0; i < secBtn.length; i++) {
     secBtn[i].addEventListener("click", function () {
       let currentBtn = document.querySelectorAll(".active-btn");
-      currentBtn[0].className = currentBtn[0].className.replace("active-btn","");
+      currentBtn[0].className = currentBtn[0].className.replace("active-btn", "");
       this.className += " active-btn";
     });
   }
@@ -39,22 +39,25 @@ function PageTransitions() {
   })
 }
 
-  document.getElementById("sendEmailBtn").addEventListener("click", function() {
-  // Collect values
+document.getElementById("sendEmailBtn").addEventListener("click", function () {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const subject = document.getElementById("subject").value.trim();
   const message = document.getElementById("message").value.trim();
 
-  // Validate required fields
-  if (!name || !email || !message) {
-    alert("Please fill out Name, Email, and Message fields before sending.");
+  // Gather missing fields
+  const missingFields = [];
+  if (!name) missingFields.push("Name");
+  if (!email) missingFields.push("Email");
+  if (!message) missingFields.push("Message");
+
+  if (missingFields.length > 0) {
+    alert("Please fill the following field(s): " + missingFields.join(", "));
     return;
   }
 
-  // Proceed if validation passes
+  // All required fields present, send email
   const templateParams = { name, email, subject, message };
-
   emailjs.send("service_3q9gyu5", "template_icsl03m", templateParams)
     .then(() => alert("Message Sent to Naga"))
     .catch(() => alert("Email not sent!"));
