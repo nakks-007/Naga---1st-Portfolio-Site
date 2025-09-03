@@ -3,6 +3,16 @@ const secBtns = document.querySelectorAll(".controls");
 const secBtn = document.querySelectorAll(".control");
 const allSections = document.querySelector(".main-content");
 
+/**
+ * Initializes interactive page transitions:
+ * - Handles navigation button active state.
+ * - Handles section show/hide based on navigation clicks.
+ * - Handles theme toggle (light/dark mode).
+ * 
+ * No parameters.
+ * No return value.
+ */
+
 function PageTransitions() {
   //Button click active class
   for (let i = 0; i < secBtn.length; i++) {
@@ -38,6 +48,16 @@ function PageTransitions() {
     element.classList.toggle('light-mode')
   })
 }
+
+/**
+ * Handles the Send Email button click event:
+ * Validates required form fields (name, email, message) and shows an alert
+ * specifying missing fields if any. If all required fields are filled,
+ * sends the email via EmailJS and alerts the result.
+ * 
+ * No parameters.
+ * No return value.
+ */
 
 document.getElementById("sendEmailBtn").addEventListener("click", function () {
   const name = document.getElementById("name").value.trim();
